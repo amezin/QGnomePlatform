@@ -47,6 +47,10 @@ protected:
     bool handleMouse(QWaylandInputDevice *inputDevice, const QPointF &local, const QPointF &global,Qt::MouseButtons b,Qt::KeyboardModifiers mods) override;
     bool handleTouch(QWaylandInputDevice *inputDevice, const QPointF &local, const QPointF &global, Qt::TouchPointState state, Qt::KeyboardModifiers mods) override;
 private:
+#if (QT_VERSION < QT_VERSION_CHECK(5, 13, 0))
+    void startResize(QWaylandInputDevice *inputDevice, Qt::Edges edges, Qt::MouseButtons buttons);
+#endif
+
     void initializeButtonPixmaps();
     void initializeColors();
     QPixmap pixmapDarkVariant(const QPixmap &pixmap);
